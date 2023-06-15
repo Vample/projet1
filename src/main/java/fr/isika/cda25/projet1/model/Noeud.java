@@ -38,22 +38,51 @@ public class Noeud {
 		return res; // affichage infixe (Gauche-Noeud-Droit)
 	}
 
+//	public void ajouterStagiaire(Stagiaire nouveauStagiaire) {
+//		if (this.cle.compareTo(nouveauStagiaire) < 0) { // Nouveau stagiaire plus grand que le stagiaire du noeud (on regarde
+//													// à droite)
+//			if (filsDroit == null) {
+//				filsDroit = new Noeud(nouveauStagiaire); // cas terminaison
+//			} else {
+//				filsDroit.ajouterStagiaire(nouveauStagiaire); // cas continu
+//			}
+//
+//		} else {
+//			if (filsGauche == null) {
+//				filsGauche = new Noeud(nouveauStagiaire); // cas terminaison
+//			} else {
+//				filsGauche.ajouterStagiaire(nouveauStagiaire); // cas continu
+//			}
+//		}
+//	}
+	
 	public void ajouterStagiaire(Stagiaire nouveauStagiaire) {
-		if (this.cle.compareTo(nouveauStagiaire) < 0) { // Nouveau stagiaire plus grand que le stagiaire du noeud (on regarde
-													// à droite)
-			if (filsDroit == null) {
-				filsDroit = new Noeud(nouveauStagiaire); // cas terminaison
-			} else {
-				filsDroit.ajouterStagiaire(nouveauStagiaire); // cas continu
-			}
-
-		} else {
-			if (filsGauche == null) {
-				filsGauche = new Noeud(nouveauStagiaire); // cas terminaison
-			} else {
-				filsGauche.ajouterStagiaire(nouveauStagiaire); // cas continu
-			}
-		}
+	    int resultatComparaison = this.cle.compareTo(nouveauStagiaire);
+	    if (resultatComparaison < 0) {
+	        // Nouveau stagiaire plus grand que le stagiaire du nœud (on regarde à droite)
+	        if (filsDroit == null) {
+	            filsDroit = new Noeud(nouveauStagiaire); // cas terminaison
+	        } else {
+	            filsDroit.ajouterStagiaire(nouveauStagiaire); // cas continu
+	        }
+	    } else if (resultatComparaison > 0) {
+	        // Nouveau stagiaire plus petit que le stagiaire du nœud (on regarde à gauche)
+	        if (filsGauche == null) {
+	            filsGauche = new Noeud(nouveauStagiaire); // cas terminaison
+	        } else {
+	            filsGauche.ajouterStagiaire(nouveauStagiaire); // cas continu
+	        }
+	    } else {										// si c'est = à 0
+	        if (cle.getSuivant() == null) {				// n'a pas encore de doublon
+	            cle.setSuivant(nouveauStagiaire);
+	        } else {
+	            Stagiaire dernierStagiaire = cle.getSuivant();		
+	            while (dernierStagiaire.getSuivant() != null) {		//boucle pour trouver la ou c'est null pour qu'il aller à la fin de la liste
+	                dernierStagiaire = dernierStagiaire.getSuivant();
+	            }
+	            dernierStagiaire.setSuivant(nouveauStagiaire);
+	        }
+	    }
 	}
 
 	// faire la méthode de recherche qui cherche dans l'arbre le noeud contenant un
@@ -102,6 +131,30 @@ public class Noeud {
 		// cas terminaison 2
 		return null; // si stagiaire non trouvé et pas d'enfant, on return null par défaut
 	}
+	
+	
+	public void rechercherStagiairePrenom(String prenomDuStagiaire) {
+        if (this != null) {
+           
+            if (filsGauche != null) {
+                filsGauche.rechercherStagiairePrenom(prenomDuStagiaire); // sinon on passe au fils gauche
+            }
+            if (cle.getPrenom().equalsIgnoreCase(prenomDuStagiaire)) { //la ou on verifie si c'est =
+                System.out.println(cle.toString());
+            }
+            if (filsDroit != null) {
+                filsDroit.rechercherStagiairePrenom(prenomDuStagiaire); //pareil mais fils droit
+            }
+            Stagiaire dernierStagiaire = cle.getSuivant();				// pour verifier dans les liste chainée meme choe que en haut pour ajoiter stagiaire
+            while (dernierStagiaire != null) {
+                if (dernierStagiaire.getPrenom().equalsIgnoreCase(prenomDuStagiaire)) {
+                    System.out.println(dernierStagiaire.toString());
+                }
+                dernierStagiaire = dernierStagiaire.getSuivant();
+            }
+        }
+    }
+	
 
 	public int nombredeNoeuds() {
 		int nombre = 1;
