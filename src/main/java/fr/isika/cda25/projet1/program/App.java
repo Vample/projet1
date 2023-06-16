@@ -1,7 +1,9 @@
-package fr.isika.cda25.projet1.vue;
+package fr.isika.cda25.projet1.program;
 
 import java.util.Optional;
 
+import fr.isika.cda25.projet1.vue.VueAdmin;
+import fr.isika.cda25.projet1.vue.VueAnnuaire;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

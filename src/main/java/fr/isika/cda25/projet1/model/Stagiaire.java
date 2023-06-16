@@ -15,7 +15,6 @@ public class Stagiaire {
 	private String departement;
 	private String formation;
 	private int anneeRentree;
-	private Stagiaire suivant;
 
 	// constructeur
 
@@ -26,7 +25,6 @@ public class Stagiaire {
 		this.departement = departement;
 		this.formation = formation;
 		this.anneeRentree = anneeRentree;
-		this.suivant = null;
 	}
 
 	// getters & setters
@@ -126,14 +124,6 @@ public class Stagiaire {
 		this.anneeRentree = anneeRentree;
 	}
 
-	public Stagiaire getSuivant() {
-		return suivant;
-	}
-
-	public void setSuivant(Stagiaire suivant) {
-		this.suivant = suivant;
-	}
-
 	// méthodes spécifiques
 
 	@Override
@@ -143,7 +133,7 @@ public class Stagiaire {
 
 	// NE FAIRE LA COMPARAISON QUE SUR LE NOM
 	public int compareTo(Stagiaire stag) {
-		return this.getNom().compareTo(stag.getNom());
+		return this.getNom().trim().compareTo(stag.getNom().trim());
 	}
 
 }
