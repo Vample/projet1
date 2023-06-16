@@ -41,7 +41,7 @@ public class Annuaire {
 
 	public NoeudCellule chercherNoeud(int index) {
 
-		return racine.chercherNoeud(raf, index);
+		return racine.chercherNoeudParIndex(raf, index);
 	}
 	
 

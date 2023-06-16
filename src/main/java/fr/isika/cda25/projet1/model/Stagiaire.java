@@ -128,7 +128,7 @@ public class Stagiaire {
 
 	@Override
 	public String toString() {
-		return nom.toUpperCase() + "\n" + prenom + "\n" + departement + "\n" + formation + "\n" + anneeRentree + "\n\n";
+		return nom.toUpperCase() + "\n" + prenom + "\n" + departement + "\n" + formation + "\n" + anneeRentree + "\n";
 	}
 
 	// NE FAIRE LA COMPARAISON QUE SUR LE NOM
