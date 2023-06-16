@@ -1,4 +1,4 @@
-package fr.isika.cda25.projet1.program;
+package fr.isika.cda25.projet1.trash;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 import fr.isika.cda25.projet1.model.Annuaire;
-import fr.isika.cda25.projet1.model.Noeud;
 import fr.isika.cda25.projet1.model.Stagiaire;
 import javafx.application.Application;
 import javafx.scene.Scene;

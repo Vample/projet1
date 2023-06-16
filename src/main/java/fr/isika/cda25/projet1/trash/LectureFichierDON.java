@@ -1,4 +1,4 @@
-package fr.isika.cda25.projet1.program;
+package fr.isika.cda25.projet1.trash;
 
 import java.io.BufferedReader;
 import java.io.File;

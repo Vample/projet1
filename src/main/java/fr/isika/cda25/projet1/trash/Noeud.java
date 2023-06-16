@@ -1,4 +1,6 @@
-package fr.isika.cda25.projet1.model;
+package fr.isika.cda25.projet1.trash;
+
+import fr.isika.cda25.projet1.model.Stagiaire;
 
 public class Noeud {
 

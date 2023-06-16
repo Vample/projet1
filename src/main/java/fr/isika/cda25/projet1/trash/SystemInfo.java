@@ -1,4 +1,4 @@
-package fr.isika.cda25.projet1.program;
+package fr.isika.cda25.projet1.trash;
 
 public class SystemInfo {
 
