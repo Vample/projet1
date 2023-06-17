@@ -15,7 +15,14 @@ public class VueAdmin extends GridPane {
 	
     public VueAdmin() {
     	HBox hboxbarreOption = new HBox();
-    	this.getChildren().add(hboxbarreOption);
+    	TableStagiaires listeStagiaires = new TableStagiaires();
+    	
+    	hboxbarreOption.setSpacing(10);
+
+    	
+    	this.add(hboxbarreOption,0,0);
+    	this.add(listeStagiaires.getTable(),0,1);
+    	
     	
     	TextField txtNom = new TextField();
     	txtNom.setPromptText("Nom");

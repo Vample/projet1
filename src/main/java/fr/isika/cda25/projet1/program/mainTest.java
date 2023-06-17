@@ -9,7 +9,6 @@ import java.io.RandomAccessFile;
 import fr.isika.cda25.projet1.model.Annuaire;
 import fr.isika.cda25.projet1.model.NoeudCellule;
 import fr.isika.cda25.projet1.model.Stagiaire;
-import fr.isika.cda25.projet1.trash.Arbre;
 import fr.isika.cda25.projet1.trash.Noeud;
 
 public class mainTest {
@@ -26,7 +25,7 @@ public class mainTest {
 //		annuaire.ajouterStagiaire(new Stagiaire("Alonso", "Miguel","75","CDA25",2023));
 ////		
 
-		System.out.println(annuaire.chercherNoeud(327));
+		System.out.println(annuaire.chercherNoeud(0));
 
 //		try {
 //			annuaire.setRaf(new RandomAccessFile("src/main/java/fr/isika/cda25/projet1/files/stagiaires.bin", "rw"));

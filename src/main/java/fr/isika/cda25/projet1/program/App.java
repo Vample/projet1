@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 
@@ -25,10 +24,13 @@ public class App extends Application {
     public void start(Stage stage) {
     	VueAnnuaire vueAnnuaire = new VueAnnuaire();
     	VueAdmin vueAdmin = new VueAdmin();
+    	
+    	
         Scene scene = new Scene(vueAnnuaire);
-        stage.setMaximized(true);
+        //stage.setMaximized(true);
         stage.setTitle("Liste des stagiaires");
         stage.setScene(scene);
+        stage.setWidth(scene.getWidth()*1.1);
         stage.show();
         vueAnnuaire.getButtonRechercher().requestFocus();
         
