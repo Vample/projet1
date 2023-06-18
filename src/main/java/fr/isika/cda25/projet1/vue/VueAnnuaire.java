@@ -10,8 +10,10 @@ import javafx.scene.control.Button;
  * JavaFX App
  */
 public class VueAnnuaire extends GridPane {
-	private Button buttonRechercher;
-	private Button buttonAdmin;
+	protected Button buttonRechercher;
+	protected Button buttonAdmin;
+	protected Button buttonModifier;
+	protected Button buttonSupprimer;
 	
     public VueAnnuaire() {
     	HBox hboxbarreOption = new HBox();
@@ -50,12 +52,12 @@ public class VueAnnuaire extends GridPane {
     	buttonAjouter.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
     	hboxbarreOption.getChildren().add(buttonAjouter);
     	
-    	Button buttonModifier = new Button("✎");
+    	buttonModifier = new Button("✎");
     	buttonModifier.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
     	hboxbarreOption.getChildren().add(buttonModifier);
     	buttonModifier.setDisable(true);
     	
-    	Button buttonSupprimer = new Button("➖");
+    	buttonSupprimer = new Button("➖");
     	buttonSupprimer.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
     	hboxbarreOption.getChildren().add(buttonSupprimer);
     	buttonSupprimer.setDisable(true);
