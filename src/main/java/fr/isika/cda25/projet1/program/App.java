@@ -1,7 +1,9 @@
 package fr.isika.cda25.projet1.program;
 
+import java.io.IOException;
 import java.util.Optional;
 
+import fr.isika.cda25.projet1.model.Annuaire;
 import fr.isika.cda25.projet1.vue.VueAdmin;
 import fr.isika.cda25.projet1.vue.VueAnnuaire;
 import javafx.application.Application;
@@ -16,9 +18,19 @@ import javafx.stage.Stage;
 /**
  * JavaFX App
  */
+
+
+
 public class App extends Application {
 	
-    private VueAnnuaire vueAnnuaire;
+    @Override
+	public void init() throws Exception {
+		// TODO Auto-generated method stub
+		super.init();
+	}
+
+	private VueAnnuaire vueAnnuaire;
+    private Annuaire annuaire = new Annuaire();
 
     @Override
     public void start(Stage stage) {
@@ -65,6 +77,18 @@ public class App extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				scene.setRoot(vueAnnuaire);
+				
+			}
+		});
+        
+        vueAnnuaire.getButtonRechercher().setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				//Ici on lance la méthode de l'annuaire qui sort une List et la donne au TableView
+				vueAnnuaire.getListeStagiaires().extraireStagiairesSpecifiques(annuaire.rechercheAvancee(vueAnnuaire.getTxtNom().getText().toUpperCase(),
+						vueAnnuaire.getTxtPrenom().getText(), vueAnnuaire.getTxtDepartement().getText(), vueAnnuaire.getTxtFormation().getText(), vueAnnuaire.getTxtAnnee().getText()));
+				
 				
 			}
 		});

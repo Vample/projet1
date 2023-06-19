@@ -15,9 +15,18 @@ public class VueAnnuaire extends GridPane {
 	protected Button buttonModifier;
 	protected Button buttonSupprimer;
 	
+	protected TextField txtNom;
+	protected TextField txtPrenom;
+	protected TextField txtDepartement;
+	protected TextField txtFormation;
+	protected TextField txtAnnee;
+	
+//private Annuaire annuaire;
+	private TableStagiaires listeStagiaires;
+	
     public VueAnnuaire() {
     	HBox hboxbarreOption = new HBox();
-    	TableStagiaires listeStagiaires = new TableStagiaires();
+    	this.listeStagiaires = new TableStagiaires();
     	
     	hboxbarreOption.setSpacing(10);
 
@@ -25,23 +34,23 @@ public class VueAnnuaire extends GridPane {
     	this.add(hboxbarreOption,0,0);
     	this.add(listeStagiaires.getTable(),0,1);
     	
-    	TextField txtNom = new TextField();
+    	txtNom = new TextField();
     	txtNom.setPromptText("Nom");
     	hboxbarreOption.getChildren().add(txtNom);
     	
-    	TextField txtPrenom = new TextField();
+    	txtPrenom = new TextField();
     	txtPrenom.setPromptText("Prénom");
     	hboxbarreOption.getChildren().add(txtPrenom);
     	
-    	TextField txtDepartement = new TextField();
+    	txtDepartement = new TextField();
     	txtDepartement.setPromptText("N°Département");
     	hboxbarreOption.getChildren().add(txtDepartement);
     	
-    	TextField txtFormation = new TextField();
+    	txtFormation = new TextField();
     	txtFormation.setPromptText("Formation");
     	hboxbarreOption.getChildren().add(txtFormation);
     	
-    	TextField txtAnnee = new TextField();
+    	txtAnnee = new TextField();
     	txtAnnee.setPromptText("Année d'entrée");
     	hboxbarreOption.getChildren().add(txtAnnee);
     	
@@ -74,6 +83,58 @@ public class VueAnnuaire extends GridPane {
     public Button getButtonAdmin() {
     	return buttonAdmin;
     }
+
+	public TableStagiaires getListeStagiaires() {
+		return listeStagiaires;
+	}
+
+	public void setListeStagiaires(TableStagiaires listeStagiaires) {
+		this.listeStagiaires = listeStagiaires;
+	}
+
+	public TextField getTxtNom() {
+		return txtNom;
+	}
+
+	public void setTxtNom(TextField txtNom) {
+		this.txtNom = txtNom;
+	}
+
+	public TextField getTxtPrenom() {
+		return txtPrenom;
+	}
+
+	public void setTxtPrenom(TextField txtPrenom) {
+		this.txtPrenom = txtPrenom;
+	}
+
+	public TextField getTxtDepartement() {
+		return txtDepartement;
+	}
+
+	public void setTxtDepartement(TextField txtDepartement) {
+		this.txtDepartement = txtDepartement;
+	}
+
+	public TextField getTxtFormation() {
+		return txtFormation;
+	}
+
+	public void setTxtFormation(TextField txtFormation) {
+		this.txtFormation = txtFormation;
+	}
+
+	public TextField getTxtAnnee() {
+		return txtAnnee;
+	}
+
+	public void setTxtAnnee(TextField txtAnnee) {
+		this.txtAnnee = txtAnnee;
+	}
+	
+	
+    
+    
     
     
     

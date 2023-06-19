@@ -3,6 +3,7 @@ package fr.isika.cda25.projet1.vue;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import fr.isika.cda25.projet1.model.Annuaire;
 import javafx.scene.control.Button;
 
 
@@ -14,7 +15,6 @@ public class VueAdmin extends VueAnnuaire {
 //	private Button buttonAdmin;
 	
 	public VueAdmin() {
-		super();
 		buttonModifier.setDisable(false);
 		buttonSupprimer.setDisable(false);
 		buttonAdmin.setText("Déconnexion");

@@ -3,6 +3,9 @@ package fr.isika.cda25.projet1.model;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.List;
+
+import javafx.collections.ObservableList;
 
 public class NoeudCellule {
 	public static final int TAILLE_NOEUD_OCTET = Stagiaire.TAILLE_STAGIAIRE_OCTET
@@ -84,7 +87,7 @@ public class NoeudCellule {
 			//
 			NoeudCellule nouveauNoeud = new NoeudCellule(nouveauStagiaire, noeudCourant.getIndexNoeud());
 			ecrireNoeud(raf, nouveauNoeud, nouveauNoeud.getIndexNoeud()); // on écrit (cas
-																// terminaison)
+			// terminaison)
 
 		} else {
 
@@ -95,8 +98,12 @@ public class NoeudCellule {
 			if (noeudCourant.getCle().compareTo(nouveauStagiaire) == 0) {
 				if (noeudCourant.getIndexDoublon() != -1) { // mais qu'il a déjà l'index un doublon
 
-					NoeudCellule noeudSuivant = this.chercherNoeudParIndex(raf, noeudCourant.getIndexDoublon()); // on recopie le noeud en
-																						// question
+					NoeudCellule noeudSuivant = this.chercherNoeudParIndex(raf, noeudCourant.getIndexDoublon()); // on
+																													// recopie
+																													// le
+																													// noeud
+																													// en
+					// question
 					ajouterStagiaire(raf, nouveauStagiaire, noeudSuivant); // on lui passe le cas. S'il a lui-même déjà
 																			// l'index d'un doublon, il le passera au
 																			// suivant, etc.
@@ -104,7 +111,8 @@ public class NoeudCellule {
 					// on lui donne comme indexDoublon le premier index disponible (c.a.d la fin du
 					// fichier)
 					noeudCourant.setIndexDoublon((int) (raf.length() / NoeudCellule.TAILLE_NOEUD_OCTET));
-					ecrireNoeud(raf, noeudCourant,noeudCourant.getIndexNoeud()); //on le réécrit dans le fichier pour mettre à jour l'info
+					ecrireNoeud(raf, noeudCourant, noeudCourant.getIndexNoeud()); // on le réécrit dans le fichier pour
+																					// mettre à jour l'info
 					// On créé un nouveau noeud à l'index qu'on vient de déclarer
 					NoeudCellule nouveauNoeud = new NoeudCellule(nouveauStagiaire, noeudCourant.getIndexDoublon());
 					// On lui passe cette méthode afin d'arriver sur le cas terminaison
@@ -117,8 +125,12 @@ public class NoeudCellule {
 
 				if (noeudCourant.getIndexFilsGauche() != -1) { // mais qu'il a déjà l'index d'un filsGauche
 
-					NoeudCellule noeudSuivant = this.chercherNoeudParIndex(raf, noeudCourant.getIndexFilsGauche()); // on recopie le noeud en
-																							// question
+					NoeudCellule noeudSuivant = this.chercherNoeudParIndex(raf, noeudCourant.getIndexFilsGauche()); // on
+																													// recopie
+																													// le
+																													// noeud
+																													// en
+					// question
 					ajouterStagiaire(raf, nouveauStagiaire, noeudSuivant); // on lui passe le cas. S'il a lui-même déjà
 																			// l'index d'un filsGauche, il le passera au
 																			// suivant, etc.
@@ -127,7 +139,8 @@ public class NoeudCellule {
 					// du
 					// fichier)
 					noeudCourant.setIndexFilsGauche((int) (raf.length() / NoeudCellule.TAILLE_NOEUD_OCTET));
-					ecrireNoeud(raf, noeudCourant,noeudCourant.getIndexNoeud()); //on le réécrit dans le fichier pour mettre à jour l'info
+					ecrireNoeud(raf, noeudCourant, noeudCourant.getIndexNoeud()); // on le réécrit dans le fichier pour
+																					// mettre à jour l'info
 					// On créé un nouveau noeud à l'index qu'on vient de déclarer
 					NoeudCellule nouveauNoeud = new NoeudCellule(nouveauStagiaire, noeudCourant.getIndexFilsGauche());
 					// On lui passe cette méthode afin d'arriver sur le cas terminaison
@@ -140,37 +153,40 @@ public class NoeudCellule {
 
 				if (noeudCourant.getIndexFilsDroit() != -1) { // mais qu'il a déjà l'index d'un filsDroit
 
-					NoeudCellule noeudSuivant = this.chercherNoeudParIndex(raf, noeudCourant.getIndexFilsDroit()); // on recopie le noeud en
+					NoeudCellule noeudSuivant = this.chercherNoeudParIndex(raf, noeudCourant.getIndexFilsDroit()); // on
+																													// recopie
+																													// le
+																													// noeud
+																													// en
 					// question
 					ajouterStagiaire(raf, nouveauStagiaire, noeudSuivant); // on lui passe le cas. S'il a lui-même déjà
 																			// l'index d'un filsDroit, il le passera au
 																			// suivant, etc.
 				} else { // s'il n'a pas encore l'index d'un filsDroit
-						// on lui donne comme indexFilsDroit le premier index disponible (c.a.d la fin du
-						// fichier)
+							// on lui donne comme indexFilsDroit le premier index disponible (c.a.d la fin
+							// du
+							// fichier)
 					noeudCourant.setIndexFilsDroit((int) (raf.length() / NoeudCellule.TAILLE_NOEUD_OCTET));
-					ecrireNoeud(raf, noeudCourant,noeudCourant.getIndexNoeud()); //on le réécrit dans le fichier pour mettre à jour l'info
-							// On créé un nouveau noeud à l'index qu'on vient de déclarer
+					ecrireNoeud(raf, noeudCourant, noeudCourant.getIndexNoeud()); // on le réécrit dans le fichier pour
+																					// mettre à jour l'info
+					// On créé un nouveau noeud à l'index qu'on vient de déclarer
 					NoeudCellule nouveauNoeud = new NoeudCellule(nouveauStagiaire, noeudCourant.getIndexFilsDroit());
-							// On lui passe cette méthode afin d'arriver sur le cas terminaison
+					// On lui passe cette méthode afin d'arriver sur le cas terminaison
 					ajouterStagiaire(raf, nouveauStagiaire, nouveauNoeud);
 				}
 			}
 
 		}
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return cle.toString()+"FG : "+indexFilsGauche+"\nFD : "+indexFilsDroit+"\nDoublon : "+indexDoublon;
+		return cle.toString() + "FG : " + indexFilsGauche + "\nFD : " + indexFilsDroit + "\nDoublon : " + indexDoublon;
 	}
-
-
 
 	private void ecrireNoeud(RandomAccessFile raf, NoeudCellule noeud, int index) throws IOException {
 
-		raf.seek(index*NoeudCellule.TAILLE_NOEUD_OCTET);
+		raf.seek(index * NoeudCellule.TAILLE_NOEUD_OCTET);
 		// S'il y a un stagiaire dans le fichier, indexNoeud sera = à 1, à 2 s'il y en a
 		// 2, etc... (voir NoeudCellule.ajouterStagiaire())
 
@@ -205,8 +221,6 @@ public class NoeudCellule {
 
 	public NoeudCellule chercherNoeudParIndex(RandomAccessFile raf, int index) {
 		try {
-
-			
 
 			if (raf.length() == index * NoeudCellule.TAILLE_NOEUD_OCTET) {
 				return new NoeudCellule(null, index); // S'il n'y a pas de racine (fichier vide)
@@ -262,34 +276,134 @@ public class NoeudCellule {
 
 	}
 
-	public NoeudCellule chercherNoeudParAnnee(RandomAccessFile raf, int annee) {
+	public void chercherNoeudParAnnee(RandomAccessFile raf, String annee, List<NoeudCellule> listeNoeuds) {
 		// TODO Auto-generated method stub
-		return null;
+
 	}
 
-	public NoeudCellule chercherNoeudParFormation(RandomAccessFile raf, String formation) {
+	public void chercherNoeudParFormation(RandomAccessFile raf, String formation, List<NoeudCellule> listeNoeuds) {
 		// TODO Auto-generated method stub
-		return null;
+
 	}
 
-	public NoeudCellule chercherNoeudParDepartement(RandomAccessFile raf, String departement) {
+	public void chercherNoeudParDepartement(RandomAccessFile raf, String departement, List<NoeudCellule> listeNoeuds) {
 		// TODO Auto-generated method stub
-		return null;
+
 	}
 
-	public NoeudCellule chercherNoeudParPrenom(RandomAccessFile raf, String prenom) {
-		// TODO Auto-generated method stub
-		return null;
+	public void chercherNoeudParPrenom(RandomAccessFile raf, String prenom, List<NoeudCellule> listeNoeuds) {
+
+		// Pour chaque noeud (en suivant l'ordre infixe) on regarde si le prenom
+		// correspond. Si oui, on ajoute le noeud à la liste.
+
+		if (this.getIndexFilsGauche() != -1) {
+			this.chercherNoeudParIndex(raf, this.indexFilsGauche).chercherNoeudParPrenom(raf, prenom, listeNoeuds);
+		}
+
+		if (this.getIndexDoublon() != -1) {
+			this.chercherNoeudParIndex(raf, this.indexDoublon).chercherNoeudParPrenom(raf, prenom, listeNoeuds);
+		}
+
+		if (this.getCle().getPrenom().trim().compareTo(prenom) == 0) {
+			listeNoeuds.add(this);
+		}
+
+		if (this.getIndexFilsDroit() != -1) {
+			this.chercherNoeudParIndex(raf, this.indexFilsDroit).chercherNoeudParPrenom(raf, prenom, listeNoeuds);
+		}
+
 	}
 
-	public NoeudCellule chercherNoeudParNom(RandomAccessFile raf, String nom) {
+	public void chercherNoeudParNom(RandomAccessFile raf, String nom, List<NoeudCellule> listeNoeuds) {
 		// TODO Auto-generated method stub
-		return null;
+
+		if (this.getCle().getNom().trim().compareTo(nom) > 0) { // s'il est plus petit
+
+			// si le NoueudCourant a un fils gauche on lui passe la méthode
+			if (this.getIndexFilsGauche() != -1) {
+				this.chercherNoeudParIndex(raf, this.indexFilsGauche).chercherNoeudParNom(raf, nom, listeNoeuds);
+			}
+
+		}
+
+		// si le nom du Noeudcourant = le nom recherché
+		if (this.getCle().getNom().trim().compareTo(nom) == 0) {
+
+			// Si le NoeudCourant a un doublon on lui passe la méthode
+			if (this.getIndexDoublon() != -1) {
+				this.chercherNoeudParIndex(raf, this.indexDoublon).chercherNoeudParNom(raf, nom, listeNoeuds);
+			}
+			// on ajoute ce noeud au résultat
+			listeNoeuds.add(this);
+		}
+		// si le nom recherché est plus grand que le nom du NoeudCourant
+		if (this.getCle().getNom().trim().compareTo(nom) < 0) {
+			// si le NoueudCourant a un fils droit on lui passe la méthode
+			if (this.getIndexFilsDroit() != -1) {
+				this.chercherNoeudParIndex(raf, this.indexFilsDroit).chercherNoeudParNom(raf, nom, listeNoeuds);
+			}
+
+		}
+
 	}
 
+	public void rechercheAvancee(RandomAccessFile raf, String nom, String prenom, String departement, String formation,
+			String annee, List<NoeudCellule> listeNoeuds) {
+		
+		
+		
+		
+
+		if (nom.compareTo("") != 0) { // si le nom n'est pas vide
+			this.chercherNoeudParNom(raf, nom, listeNoeuds);
+		}
+
+		if (prenom.compareTo("") != 0) { // si le prenom n'est pas vide
+			this.chercherNoeudParPrenom(raf, prenom, listeNoeuds);
+		}
+
+		if (departement.compareTo("") != 0) { // si le departement n'est pas vide
+			this.chercherNoeudParDepartement(raf, departement, listeNoeuds);
+		}
+
+		if (formation.compareTo("") != 0) { // si la formation n'est pas vide
+			this.chercherNoeudParFormation(raf, formation, listeNoeuds);
+		}
+
+		if (annee.compareTo("") != 0) { // si l'année n'est pas vide
+			this.chercherNoeudParAnnee(raf, annee, listeNoeuds);
+		}
+
+		if (listeNoeuds.isEmpty()) { // si aucun champs de recherhe n'est remplis, on considère qu'il s'agit d'un
+										// retour à l'affichagr par défaut
+			this.recupererTousLesNoeuds(raf, listeNoeuds);
+		}
+
+	}
+
+	public void recupererTousLesNoeuds(RandomAccessFile raf, List<NoeudCellule> listeNoeuds) {
+		// TODO Auto-generated method stub
+
+		// si le NoueudCourant a un fils gauche on lui passe la méthode
+		if (this.getIndexFilsGauche() != -1) {
+			this.chercherNoeudParIndex(raf, this.indexFilsGauche).recupererTousLesNoeuds(raf, listeNoeuds);
+		}
+
+		// on ajoute le noeud au résultat
+		listeNoeuds.add(this);
+
+		// Si le NoeudCourant a un doublon on lui passe la méthode
+		if (this.getIndexDoublon() != -1) {
+			this.chercherNoeudParIndex(raf, this.indexDoublon).recupererTousLesNoeuds(raf, listeNoeuds);
+		}
+
+		// si le NoeudCourant a un fils droit on lui passe la méthode
+		if (this.getIndexFilsDroit() != -1) {
+			this.chercherNoeudParIndex(raf, this.indexFilsDroit).recupererTousLesNoeuds(raf, listeNoeuds);
+		}
+
+	}
 }
-
-
 
 //public void ajouterStagiaire(RandomAccessFile raf, Stagiaire nouveauStagiaire, NoeudCellule noeudCourant)
 //throws IOException {
