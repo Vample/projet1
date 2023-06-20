@@ -9,7 +9,7 @@ import java.io.RandomAccessFile;
 import fr.isika.cda25.projet1.model.Annuaire;
 import fr.isika.cda25.projet1.model.NoeudCellule;
 import fr.isika.cda25.projet1.model.Stagiaire;
-import fr.isika.cda25.projet1.trash.Noeud;
+import fr.isika.cda25.projet1.old.Noeud;
 
 public class mainTest {
 

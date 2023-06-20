@@ -1,3 +1,4 @@
+package fr.isika.cda25.projet1.old;
 //package fr.isika.cda25.projet1.trash;
 //
 //import java.io.BufferedReader;

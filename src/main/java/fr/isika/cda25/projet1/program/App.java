@@ -23,63 +23,25 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 	
-    @Override
-	public void init() throws Exception {
-		// TODO Auto-generated method stub
-		super.init();
-	}
 
 	private VueAnnuaire vueAnnuaire;
     private Annuaire annuaire = new Annuaire();
 
     @Override
     public void start(Stage stage) {
-    	VueAnnuaire vueAnnuaire = new VueAnnuaire();
-    	VueAdmin vueAdmin = new VueAdmin();
+    	VueAnnuaire vueAnnuaire = new VueAnnuaire(stage);
+
     	
     	
         Scene scene = new Scene(vueAnnuaire);
         //stage.setMaximized(true);
         stage.setTitle("Liste des stagiaires");
         stage.setScene(scene);
-        stage.setWidth(scene.getWidth()*1.1);
         stage.show();
         vueAnnuaire.getButtonRechercher().requestFocus();
         
-        vueAnnuaire.getButtonAdmin().setOnAction(new EventHandler<ActionEvent>() {
-        	
-        	@Override
-        	public void handle(ActionEvent event) {
-        		TextInputDialog dialog = new TextInputDialog();
-                dialog.setTitle("Connexion");
-                dialog.setHeaderText("Veuillez saisir le mot de passe :");
-                dialog.setContentText("Mot de passe:");
-
-                Optional<String> result = dialog.showAndWait();
-                result.ifPresent(password -> {
-                    // Vérifiez le mot de passe ici
-                    if (password.equals("cda25admin")) {
-                    	scene.setRoot(vueAdmin);
-                    	vueAdmin.getButtonRechercher().requestFocus();
-                    } else {
-                    	Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Erreur");
-                        alert.setHeaderText("Mot de passe incorrect");
-                        alert.setContentText("Veuillez saisir un mot de passe valide.");
-                        alert.showAndWait();
-                    }
-                });
-            }
-		});
+   
         
-        vueAdmin.getButtonAdmin().setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {
-				scene.setRoot(vueAnnuaire);
-				
-			}
-		});
         
         vueAnnuaire.getButtonRechercher().setOnAction(new EventHandler<ActionEvent>() {
 			
