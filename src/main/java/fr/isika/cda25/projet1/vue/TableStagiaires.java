@@ -70,7 +70,7 @@ public class TableStagiaires {
 
 		// Display row data
 		try {
-			table.setItems(genererListe(annuaire));
+			genererListe(annuaire);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -79,51 +79,15 @@ public class TableStagiaires {
 		table.getColumns().addAll(colNom, colPrenom, colDP, colFormation, colAnnee);
 	}
 
-	public ObservableList<Stagiaire> genererListe(Annuaire annuaire) throws IOException {
+	public void genererListe(Annuaire annuaire) throws IOException {
 
-		ObservableList<Stagiaire> resul = FXCollections.observableArrayList();
 
-		this.extraireStagiaires(resul, annuaire.chercherNoeud(0)); // Récupère la racine de l'annuaire,
-																	// puis ajoute chacun des stagiaires de
-																	// l'arbre dans la liste observable, en
-																	// méthode infixe afin de les voir en
-																	// ordre
-																	// alphabétique
+		this.afficherStagiaires(annuaire.recupererTousLesNoeuds()); 
 
-		return resul;
-
-	}
-
-	private ObservableList<Stagiaire> extraireStagiaires(ObservableList<Stagiaire> resul, NoeudCellule noeudCourant) { // méthode
-		// récursive
-		// de
-		// récupération
-		// des
-		// stagiaires
-
-		// Si le noeudCourant a un fils gauche on lui passe la méthode
-		if (noeudCourant.getIndexFilsGauche() != -1) {
-			extraireStagiaires(resul, annuaire.chercherNoeud((noeudCourant.getIndexFilsGauche())));
-		}
-
-		// On resul.add le stagiaire du noeudCourant
-		resul.add(noeudCourant.getCle());
-
-		// Si le noueudCourant a un doublon on lui passe la méthode
-		if (noeudCourant.getIndexDoublon() != -1) {
-			extraireStagiaires(resul, annuaire.chercherNoeud((noeudCourant.getIndexDoublon())));
-		}
-
-		// Si le noueudCourant a un fils droit on lui passe la méthode
-		if (noeudCourant.getIndexFilsDroit() != -1) {
-			extraireStagiaires(resul, annuaire.chercherNoeud((noeudCourant.getIndexFilsDroit())));
-		}
-
-		return resul;
 
 	}
 	
-	public void extraireStagiairesSpecifiques(List<NoeudCellule> list) {
+	public void afficherStagiaires(List<NoeudCellule> list) {
 		
 		//récupère la liste de stagiaires, en fait une obsertabeList
 		ObservableList<Stagiaire> resul = FXCollections.observableArrayList();
@@ -132,8 +96,7 @@ public class TableStagiaires {
 			resul.add(stagiaireDansNoeud.getCle());
 		}
 		
-		
-		
+			
 		this.table.setItems(resul); // méthode
 		
 		

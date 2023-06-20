@@ -48,7 +48,7 @@ public class App extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				//Ici on lance la méthode de l'annuaire qui sort une List et la donne au TableView
-				vueAnnuaire.getListeStagiaires().extraireStagiairesSpecifiques(annuaire.rechercheAvancee(vueAnnuaire.getTxtNom().getText().toUpperCase(),
+				vueAnnuaire.getListeStagiaires().afficherStagiaires(annuaire.rechercheAvancee(vueAnnuaire.getTxtNom().getText().toUpperCase(),
 						vueAnnuaire.getTxtPrenom().getText(), vueAnnuaire.getTxtDepartement().getText(), vueAnnuaire.getTxtFormation().getText(), vueAnnuaire.getTxtAnnee().getText()));
 				
 				

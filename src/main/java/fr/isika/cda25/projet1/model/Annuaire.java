@@ -33,7 +33,7 @@ public class Annuaire {
 
 			raf = new RandomAccessFile(ADDRESSE_FICHIER_BINAIRE, "rw");
 			// this.racine = this.chercherNoeud(0);
-			racine.ajouterStagiaire(raf, nouveauStagiaire, racine);
+			racine.ajouterNoeud(raf, nouveauStagiaire, racine);
 
 			raf.close();
 
@@ -107,9 +107,38 @@ public class Annuaire {
 
 	}
 	
+	public void supprimerStagiaire(Stagiaire stagiaireCible) {
+		
+		try {
+			raf = new RandomAccessFile(ADDRESSE_FICHIER_BINAIRE, "rw");
+			
+			//on identifie d'abord de quel noeud il s'agit
+//			List<NoeudCellule> noeudCible = new ArrayList<>(1); //on fait une liste de capacité 1 (nécessaire car nos méthodes utilisent des listes)
+			
+//			racine.chercherNoeudParNom(raf, stagiaireCible.getNom(), noeudCible);
+			
+//			racine.supprimerNoeud(raf, noeudCible.get(0));
+			
+			racine.supprimerNoeud(raf,stagiaireCible);
+
+			raf.close();
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
 	public List<NoeudCellule> rechercheAvancee(String nom, String prenom, String departement, String formation, String annee){
 		
-		
+
 		
 		
 		try {

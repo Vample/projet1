@@ -45,7 +45,19 @@ public class VueAdmin extends VueAnnuaire {
             }
         });
         
-        
+        buttonModifier.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	Stage stageModifier = new Stage();
+                VueModifier vueModifier = new VueModifier(stageAnnuaire);
+                Scene sceneModifier = new Scene(vueModifier, 600,400);
+                
+                stageModifier.setScene(sceneModifier);
+                stageModifier.setTitle("Modification d'un stagiaire");
+                stageModifier.show();
+                
+            }
+        });
         
         
         

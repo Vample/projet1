@@ -59,6 +59,21 @@ public class VueAnnuaire extends GridPane {
         Button buttonAjouter = new Button("➕");
         buttonAjouter.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-background-color: green;");
         hboxbarreOption.getChildren().add(buttonAjouter);
+        
+        
+        buttonAjouter.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	Stage stageAjouter = new Stage();
+                VueAjouter vueAjouter = new VueAjouter(stageAnnuaire);
+                Scene sceneAjouter = new Scene(vueAjouter, 300,200);
+                
+                stageAjouter.setScene(sceneAjouter);
+                stageAjouter.setTitle("Ajout d'un stagiaire");
+                stageAjouter.show();
+                
+            }
+        });
 
         buttonModifier = new Button("✎");
         buttonModifier.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");

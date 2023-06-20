@@ -26,6 +26,11 @@ public class Stagiaire {
 		this.formation = formation;
 		this.anneeRentree = anneeRentree;
 	}
+	
+	
+	public Stagiaire() {
+		
+	}
 
 	// getters & setters
 
