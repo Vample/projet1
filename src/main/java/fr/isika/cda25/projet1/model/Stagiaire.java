@@ -19,7 +19,6 @@ public class Stagiaire {
 	// constructeur
 
 	public Stagiaire(String nom, String prenom, String departement, String formation, int anneeRentree) {
-		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.departement = departement;
