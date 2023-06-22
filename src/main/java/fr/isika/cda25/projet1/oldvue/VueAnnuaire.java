@@ -1,16 +1,10 @@
-package fr.isika.cda25.projet1.vue;
+package fr.isika.cda25.projet1.oldvue;
 
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-
-import java.util.List;
-
-import fr.isika.cda25.projet1.model.Annuaire;
-import fr.isika.cda25.projet1.model.NoeudCellule;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -107,11 +101,87 @@ public class VueAnnuaire extends GridPane {
                 
             }
         });
-        
     }
-    
-	public Button getButtonRechercher() {
-		return buttonRechercher;
+
+    public Button getButtonRechercher() {
+        return buttonRechercher;
+    }
+
+	public Button getButtonAdmin() {
+		return buttonAdmin;
 	}
-}
+
+	public void setButtonAdmin(Button buttonAdmin) {
+		this.buttonAdmin = buttonAdmin;
+	}
+
+	public Button getButtonModifier() {
+		return buttonModifier;
+	}
+
+	public void setButtonModifier(Button buttonModifier) {
+		this.buttonModifier = buttonModifier;
+	}
+
+	public Button getButtonSupprimer() {
+		return buttonSupprimer;
+	}
+
+	public void setButtonSupprimer(Button buttonSupprimer) {
+		this.buttonSupprimer = buttonSupprimer;
+	}
+
+	public TextField getTxtNom() {
+		return txtNom;
+	}
+
+	public void setTxtNom(TextField txtNom) {
+		this.txtNom = txtNom;
+	}
+
+	public TextField getTxtPrenom() {
+		return txtPrenom;
+	}
+
+	public void setTxtPrenom(TextField txtPrenom) {
+		this.txtPrenom = txtPrenom;
+	}
+
+	public TextField getTxtDepartement() {
+		return txtDepartement;
+	}
+
+	public void setTxtDepartement(TextField txtDepartement) {
+		this.txtDepartement = txtDepartement;
+	}
+
+	public TextField getTxtFormation() {
+		return txtFormation;
+	}
+
+	public void setTxtFormation(TextField txtFormation) {
+		this.txtFormation = txtFormation;
+	}
+
+	public TextField getTxtAnnee() {
+		return txtAnnee;
+	}
+
+	public void setTxtAnnee(TextField txtAnnee) {
+		this.txtAnnee = txtAnnee;
+	}
+
+	public TableStagiaires getListeStagiaires() {
+		return listeStagiaires;
+	}
+
+	public void setListeStagiaires(TableStagiaires listeStagiaires) {
+		this.listeStagiaires = listeStagiaires;
+	}
+
+	public void setButtonRechercher(Button buttonRechercher) {
+		this.buttonRechercher = buttonRechercher;
+	}
     
+    
+}

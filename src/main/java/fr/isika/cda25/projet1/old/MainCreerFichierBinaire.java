@@ -1,28 +1,36 @@
-package fr.isika.cda25.projet1.old;
-//package fr.isika.cda25.projet1.trash;
+//package fr.isika.cda25.projet1.old;
 //
-//import java.io.BufferedReader;
 //import java.io.FileNotFoundException;
-//import java.io.FileReader;
-//import java.io.IOException;
 //import java.io.RandomAccessFile;
 //
-//import fr.isika.cda25.projet1.model.Annuaire;
 //import fr.isika.cda25.projet1.model.Stagiaire;
 //import javafx.application.Application;
-//import javafx.scene.Scene;
-//import javafx.scene.control.Label;
-//import javafx.scene.layout.Pane;
-//import javafx.scene.layout.StackPane;
 //import javafx.stage.Stage;
 //
-///**
-// * JavaFX App
-// */
+////package fr.isika.cda25.projet1.trash;
+////
+////import java.io.BufferedReader;
+////import java.io.FileNotFoundException;
+////import java.io.FileReader;
+////import java.io.IOException;
+////import java.io.RandomAccessFile;
+////
+////import fr.isika.cda25.projet1.model.Annuaire;
+////import fr.isika.cda25.projet1.model.Stagiaire;
+////import javafx.application.Application;
+////import javafx.scene.Scene;
+////import javafx.scene.control.Label;
+////import javafx.scene.layout.Pane;
+////import javafx.scene.layout.StackPane;
+////import javafx.stage.Stage;
+////
+/////**
+//// * JavaFX App
+//// */
 //public class MainCreerFichierBinaire extends Application {
 //
 //	@Override
-//	public void start(Stage stage) {
+//	public void (Stage stage) {
 //
 //		Annuaire annuaire = new Annuaire();
 //
@@ -188,6 +196,12 @@ package fr.isika.cda25.projet1.old;
 //
 //	public static void main(String[] args) {
 //		launch();
+//	}
+//
+//	@Override
+//	public void start(Stage primaryStage) throws Exception {
+//		// TODO Auto-generated method stub
+//		
 //	}
 //
 //}

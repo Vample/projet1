@@ -5,7 +5,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import fr.isika.cda25.projet1.model.Annuaire;
-import fr.isika.cda25.projet1.vue.VueAnnuaire;
+import fr.isika.cda25.projet1.oldvue.VueAnnuaire;
 import javafx.scene.control.Button;
 
 

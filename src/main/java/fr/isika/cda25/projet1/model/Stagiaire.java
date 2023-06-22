@@ -24,6 +24,8 @@ public class Stagiaire {
 		this.departement = departement;
 		this.formation = formation;
 		this.anneeRentree = anneeRentree;
+
+		
 	}
 	
 	
@@ -34,7 +36,7 @@ public class Stagiaire {
 	// getters & setters
 
 	public String getNom() {
-		return nom;
+		return nom.trim();
 	}
 
 	public String getNomLong() {
@@ -57,7 +59,7 @@ public class Stagiaire {
 	}
 
 	public String getPrenom() {
-		return prenom;
+		return prenom.trim();
 	}
 
 	public String getPrenomLong() {
@@ -78,7 +80,7 @@ public class Stagiaire {
 	}
 
 	public String getDepartement() {
-		return departement;
+		return departement.trim();
 	}
 	
 	public String getDepartementLong() {
@@ -99,7 +101,7 @@ public class Stagiaire {
 	}
 
 	public String getFormation() {
-		return formation;
+		return formation.trim();
 	}
 
 	public String getFormationLong() {
@@ -132,12 +134,16 @@ public class Stagiaire {
 
 	@Override
 	public String toString() {
-		return nom.toUpperCase() + "\n" + prenom + "\n" + departement + "\n" + formation + "\n" + anneeRentree + "\n";
+		return nom.toUpperCase().trim() + "\n" + prenom.trim() + "\n" + departement.trim() + "\n" + formation.trim() + "\n" + anneeRentree + "\n";
 	}
 
 	// NE FAIRE LA COMPARAISON QUE SUR LE NOM
 	public int compareTo(Stagiaire stag) {
 		return this.getNom().trim().compareTo(stag.getNom().trim());
+	}
+	
+	public int compareStrings(Stagiaire stag) {
+		return this.toString().compareTo(stag.toString());
 	}
 
 }

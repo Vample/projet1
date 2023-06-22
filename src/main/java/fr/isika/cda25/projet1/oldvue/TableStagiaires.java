@@ -1,4 +1,4 @@
-package fr.isika.cda25.projet1.vue;
+package fr.isika.cda25.projet1.oldvue;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -42,6 +42,14 @@ public class TableStagiaires {
 
 		TableColumn<Stagiaire, Integer> colAnnee//
 				= new TableColumn<Stagiaire, Integer>("Année");
+
+		// Defines how to fill data for each cell.
+		// Get value from property of UserAccount. .
+//	      userNameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
+//	      emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+//	      firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+//	      lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+//	      activeCol.setCellValueFactory(new PropertyValueFactory<>("active"));
 
 		colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
 		colPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
@@ -94,6 +102,8 @@ public class TableStagiaires {
 		
 
 	}
+	
+	
 
 	public TableView<Stagiaire> getTable() {
 		return table;

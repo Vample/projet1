@@ -1,4 +1,4 @@
-package fr.isika.cda25.projet1.vue;
+package fr.isika.cda25.projet1.oldvue;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,7 +15,8 @@ public class VueModifier extends GridPane {
 	
 	 private TextField txtNom; 
 
-    public VueModifier(Stage stageAnnuaire, Stage stageModifier) {
+    public VueModifier(Stage stageAnnuaire) {
+    	
     	
     	String nom = "test";
     	String prenom = "de";

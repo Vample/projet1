@@ -24,15 +24,23 @@ public class Annuaire {
 		this.racine = this.chercherNoeud(0);
 		this.raf = null;
 	}
+	
+	public Annuaire (String adresseRaf) {
+		setADDRESSE_FICHIER_BINAIRE(adresseRaf);
+		this.racine = new NoeudCellule(null, 0);
+		this.racine = this.chercherNoeud(0);
+		this.raf = null;
+	}
 
 	// méthodes spécifiques
 
 	public void ajouterStagiaire(Stagiaire nouveauStagiaire) {
-
+		
+		this.racine = this.chercherNoeud(0);
 		try {
 
 			raf = new RandomAccessFile(ADDRESSE_FICHIER_BINAIRE, "rw");
-			// this.racine = this.chercherNoeud(0);
+			
 			racine.ajouterNoeud(raf, nouveauStagiaire, racine);
 
 			raf.close();
@@ -120,7 +128,7 @@ public class Annuaire {
 //
 //			racine.supprimerNoeud(raf, noeudCible.get(0));
 
-			 racine.supprimerNoeud(raf,stagiaireCible);
+			 racine.supprimerStagiaire(raf,stagiaireCible);
 
 			raf.close();
 
@@ -170,5 +178,14 @@ public class Annuaire {
 	public void setRaf(RandomAccessFile raf) {
 		this.raf = raf;
 	}
+
+	public static String getADDRESSE_FICHIER_BINAIRE() {
+		return ADDRESSE_FICHIER_BINAIRE;
+	}
+
+	public static void setADDRESSE_FICHIER_BINAIRE(String aDDRESSE_FICHIER_BINAIRE) {
+		ADDRESSE_FICHIER_BINAIRE = aDDRESSE_FICHIER_BINAIRE;
+	}
+	
 
 }

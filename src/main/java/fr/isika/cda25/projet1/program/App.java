@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.Optional;
 
 import fr.isika.cda25.projet1.model.Annuaire;
-import fr.isika.cda25.projet1.vue.VueAdmin;
-import fr.isika.cda25.projet1.vue.VueAnnuaire;
+import fr.isika.cda25.projet1.oldvue.VueAdmin;
+import fr.isika.cda25.projet1.oldvue.VueAnnuaire;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

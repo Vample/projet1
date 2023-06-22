@@ -8,7 +8,7 @@ import java.util.Comparator;
 import fr.isika.cda25.projet1.model.Annuaire;
 import fr.isika.cda25.projet1.model.NoeudCellule;
 import fr.isika.cda25.projet1.model.Stagiaire;
-import fr.isika.cda25.projet1.vue.TableStagiaires;
+import fr.isika.cda25.projet1.oldvue.TableStagiaires;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

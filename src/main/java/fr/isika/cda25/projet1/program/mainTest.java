@@ -15,7 +15,7 @@ public class mainTest {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		Annuaire annuaire = new Annuaire();
+		Annuaire annuaire = new Annuaire("src/main/java/fr/isika/cda25/projet1/files/test.bin");
 //		annuaire.ajouterStagiaire(new Stagiaire("Dechaumet", "Lucas","75","CDA25",2023));
 //		annuaire.ajouterStagiaire(new Stagiaire("Fahem", "Imene","75","CDA25",2023));
 //		annuaire.ajouterStagiaire(new Stagiaire("Brahmi", "Mohamed","75","CDA25",2023));
@@ -23,28 +23,37 @@ public class mainTest {
 //		annuaire.ajouterStagiaire(new Stagiaire("Kerbeikian", "Thade","75","CDA25",2023));
 //		annuaire.ajouterStagiaire(new Stagiaire("Bouton", "Jean-Baptiste","75","CDA25",2023));
 //		annuaire.ajouterStagiaire(new Stagiaire("Alonso", "Miguel","75","CDA25",2023));
-////		
-
-		System.out.println(annuaire.chercherNoeud(0));
-
-//		try {
-//			annuaire.setRaf(new RandomAccessFile("src/main/java/fr/isika/cda25/projet1/files/stagiaires.bin", "rw"));
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+//		annuaire.ajouterStagiaire(new Stagiaire("Paigneau", "Guillaume","75", "CDA25", 2023));	
 //
-//		for (int i = 0; i < (int) annuaire.getRaf().length() / NoeudCellule.TAILLE_NOEUD_OCTET; i++) {
-//			System.out.println("Index " + i + "\n");
-//			afficherStagiaire(annuaire.getRaf(), i);
-//			System.out.println("");
-//		}
-//		try {
-//			annuaire.getRaf().close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+//		annuaire.ajouterStagiaire(new Stagiaire("Brahmi", "Mohamed","76","CDA25",2023));	
+//		annuaire.ajouterStagiaire(new Stagiaire("Brahmi", "Mohamed","77","CDA25",2023));
+//		
+//		System.out.println(annuaire.chercherNoeud(0));
+		
+		
+//		annuaire.supprimerStagiaire(new Stagiaire("Fahem", "Imene","75","CDA25",2023));
+		
+//		annuaire.ajouterStagiaire(new Stagiaire("Dechaumet", "Lucas","76","CDA25",2023));
+		
+
+		try {
+			annuaire.setRaf(new RandomAccessFile("src/main/java/fr/isika/cda25/projet1/files/test.bin", "rw"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		for (int i = 0; i < (int) annuaire.getRaf().length() / NoeudCellule.TAILLE_NOEUD_OCTET; i++) {
+			System.out.println("Index " + i + "\n");
+			afficherStagiaire(annuaire.getRaf(), i);
+			System.out.println("");
+		}
+		try {
+			annuaire.getRaf().close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void afficherStagiaire(RandomAccessFile raf, int index) {

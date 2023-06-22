@@ -1,4 +1,4 @@
-package fr.isika.cda25.projet1.vue;
+package fr.isika.cda25.projet1.oldvue;
 
 import javafx.scene.layout.GridPane;
 

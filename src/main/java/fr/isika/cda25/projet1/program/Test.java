@@ -3,9 +3,9 @@ package fr.isika.cda25.projet1.program;
 import java.util.Optional;
 
 import fr.isika.cda25.projet1.model.Stagiaire;
-import fr.isika.cda25.projet1.vue.VueAdmin;
-import fr.isika.cda25.projet1.vue.VueAnnuaire;
-import fr.isika.cda25.projet1.vue.VueSuppression;
+import fr.isika.cda25.projet1.oldvue.VueAdmin;
+import fr.isika.cda25.projet1.oldvue.VueAnnuaire;
+import fr.isika.cda25.projet1.oldvue.VueSuppression;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

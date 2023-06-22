@@ -4,7 +4,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import fr.isika.cda25.projet1.vue.TableStagiaires;
+import fr.isika.cda25.projet1.oldvue.TableStagiaires;
 import javafx.scene.control.Button;
 
 

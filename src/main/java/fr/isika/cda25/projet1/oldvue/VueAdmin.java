@@ -1,6 +1,5 @@
-package fr.isika.cda25.projet1.vue;
+package fr.isika.cda25.projet1.oldvue;
 
-import fr.isika.cda25.projet1.model.Annuaire;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -41,9 +40,6 @@ public class VueAdmin extends VueAnnuaire {
                 
                 if (alert.getResult() == boutonOui) {
                     // méthode suppression
-                	Annuaire annuaire = new Annuaire();
-            
-                	
                 }
             	
             }
@@ -53,7 +49,7 @@ public class VueAdmin extends VueAnnuaire {
             @Override
             public void handle(ActionEvent event) {
             	Stage stageModifier = new Stage();
-                VueModifier vueModifier = new VueModifier(stageAnnuaire, stageModifier);
+                VueModifier vueModifier = new VueModifier(stageAnnuaire);
                 Scene sceneModifier = new Scene(vueModifier, 600,400);
                 
                 stageModifier.setScene(sceneModifier);

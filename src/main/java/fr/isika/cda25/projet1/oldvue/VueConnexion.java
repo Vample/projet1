@@ -1,4 +1,4 @@
-package fr.isika.cda25.projet1.vue;
+package fr.isika.cda25.projet1.oldvue;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -36,6 +36,8 @@ public class VueConnexion extends GridPane {
                     VueAdmin vueAdmin = new VueAdmin(stageAnnuaire);
                     Scene sceneAdmin = new Scene(vueAdmin);
                     stageAnnuaire.setScene(sceneAdmin);
+
+
                     stageConnexion.close();
                 } else {
                     labelErreur.setText("Mot de passe incorrect");

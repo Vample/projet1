@@ -276,43 +276,28 @@ public class NoeudCellule {
 
 	}
 
-	public void chercherNoeudParAnnee(RandomAccessFile raf, String annee, List<NoeudCellule> listeNoeuds) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void chercherNoeudParFormation(RandomAccessFile raf, String formation, List<NoeudCellule> listeNoeuds) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void chercherNoeudParDepartement(RandomAccessFile raf, String departement, List<NoeudCellule> listeNoeuds) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void chercherNoeudParPrenom(RandomAccessFile raf, String prenom, List<NoeudCellule> listeNoeuds) {
-
-		// Pour chaque noeud (en suivant l'ordre infixe) on regarde si le prenom
-		// correspond. Si oui, on ajoute le noeud à la liste.
-
-		if (this.getIndexFilsGauche() != -1) {
-			this.chercherNoeudParIndex(raf, this.indexFilsGauche).chercherNoeudParPrenom(raf, prenom, listeNoeuds);
-		}
-
-		if (this.getIndexDoublon() != -1) {
-			this.chercherNoeudParIndex(raf, this.indexDoublon).chercherNoeudParPrenom(raf, prenom, listeNoeuds);
-		}
-
-		if (this.getCle().getPrenom().trim().compareTo(prenom) == 0) {
-			listeNoeuds.add(this);
-		}
-
-		if (this.getIndexFilsDroit() != -1) {
-			this.chercherNoeudParIndex(raf, this.indexFilsDroit).chercherNoeudParPrenom(raf, prenom, listeNoeuds);
-		}
-
-	}
+//	public void chercherNoeudParPrenom(RandomAccessFile raf, String prenom, List<NoeudCellule> listeNoeuds) {
+//
+//		// Pour chaque noeud (en suivant l'ordre infixe) on regarde si le prenom
+//		// correspond. Si oui, on ajoute le noeud à la liste.
+//
+//		if (this.getIndexFilsGauche() != -1) {
+//			this.chercherNoeudParIndex(raf, this.indexFilsGauche).chercherNoeudParPrenom(raf, prenom, listeNoeuds);
+//		}
+//
+//		if (this.getIndexDoublon() != -1) {
+//			this.chercherNoeudParIndex(raf, this.indexDoublon).chercherNoeudParPrenom(raf, prenom, listeNoeuds);
+//		}
+//
+//		if (this.getCle().getPrenom().trim().compareTo(prenom) == 0) {
+//			listeNoeuds.add(this);
+//		}
+//
+//		if (this.getIndexFilsDroit() != -1) {
+//			this.chercherNoeudParIndex(raf, this.indexFilsDroit).chercherNoeudParPrenom(raf, prenom, listeNoeuds);
+//		}
+//
+//	}
 
 	public void chercherNoeudParNom(RandomAccessFile raf, String nom, List<NoeudCellule> listeNoeuds) {
 		// TODO Auto-generated method stub
@@ -350,30 +335,17 @@ public class NoeudCellule {
 	public void rechercheAvancee(RandomAccessFile raf, String nom, String prenom, String departement, String formation,
 			String annee, List<NoeudCellule> listeNoeuds) {
 
-		// TODO à terminer
+		// TODO
 
-		if (nom.compareTo("") != 0) { // si le nom n'est pas vide
-			this.chercherNoeudParNom(raf, nom, listeNoeuds);
-		}
+//		if (nom.compareTo("") != 0) { 
+//			this.chercherNoeudParNom(raf, nom, listeNoeuds);
+//		}
 
-		if (prenom.compareTo("") != 0) { // si le prenom n'est pas vide
-			this.chercherNoeudParPrenom(raf, prenom, listeNoeuds);
-		}
-
-		if (departement.compareTo("") != 0) { // si le departement n'est pas vide
-			this.chercherNoeudParDepartement(raf, departement, listeNoeuds);
-		}
-
-		if (formation.compareTo("") != 0) { // si la formation n'est pas vide
-			this.chercherNoeudParFormation(raf, formation, listeNoeuds);
-		}
-
-		if (annee.compareTo("") != 0) { // si l'année n'est pas vide
-			this.chercherNoeudParAnnee(raf, annee, listeNoeuds);
-		}
-
-		if (listeNoeuds.isEmpty()) { // si aucun champs de recherhe n'est remplis, on considère qu'il s'agit d'un
-										// retour à l'affichagr par défaut
+		if ((nom.compareTo("") == 0) && (prenom.compareTo("") == 0) && (departement.compareTo("") == 0)
+				&& (formation.compareTo("") == 0) && (annee.compareTo("") == 0)) { // si aucun champs de recherhe n'est
+																					// remplis, on considère qu'il
+																					// s'agit d'un
+			// retour à l'affichagr par défaut
 			this.recupererTousLesNoeuds(raf, listeNoeuds);
 		} else {
 
@@ -403,299 +375,201 @@ public class NoeudCellule {
 		}
 
 	}
-	
-	
-	//Essais de suppression (adaptation de l'algo du cours)
 
-	public void supprimerNoeud(RandomAccessFile raf, Stagiaire stagiaireCible) throws IOException {
 
-//		Arbre supprimer(int valeurSuppression, Arbre arbre) {
-//	        if (arbre == null)
-//	            return arbre;
-//	        if (valeurSuppression == arbre.contenu)
-//	            return supprimerRacine(arbre);
-//	        if (valeurSuppression < arbre.contenu)
-//	            arbre.filsG = supprimer(valeurSuppression, arbre.filsG);
-//	        else
-//	            arbre.filsD = supprimer(valeurSuppression, arbre.filsD);
-//	        return arbre;
-//	    }
+	public void supprimerStagiaire(RandomAccessFile raf, Stagiaire stagiaireCible) throws IOException {
 
-		if (this.cle.getNom() == stagiaireCible.getNom()) {
-			if (this.cle.toString().compareTo(stagiaireCible.toString())==0) //vérification pour les doublons
-			effacerNoeud(raf, this); 
-		} else {
-			chercherNoeudParIndex(raf, this.getIndexDoublon()).supprimerNoeud(raf, stagiaireCible);
+
+		if (this.cle.compareTo(stagiaireCible) == 0) {
+			if (this.cle.compareStrings(stagiaireCible) == 0) { // vérification pour les doublons
+				effacerNoeud(raf, this);
+			} else {
+				if (this.getIndexDoublon() != -1)
+					chercherNoeudParIndex(raf, this.getIndexDoublon()).supprimerStagiaire(raf, stagiaireCible);
+			}
 		}
-		
-		
-		
+
 		if (this.cle.getNom().compareTo(stagiaireCible.getNom()) > 0) {
-			chercherNoeudParIndex(raf, this.getIndexFilsGauche()).supprimerNoeud(raf, stagiaireCible);
-		} else {
-			chercherNoeudParIndex(raf, this.getIndexFilsDroit()).supprimerNoeud(raf, stagiaireCible);
+			if (this.getIndexFilsGauche() != -1)
+				chercherNoeudParIndex(raf, this.getIndexFilsGauche()).supprimerStagiaire(raf, stagiaireCible);
+		}
+
+		if (this.cle.getNom().compareTo(stagiaireCible.getNom()) < 0) {
+			if (this.getIndexFilsDroit() != -1)
+				chercherNoeudParIndex(raf, this.getIndexFilsDroit()).supprimerStagiaire(raf, stagiaireCible);
 		}
 	}
 
 	private void effacerNoeud(RandomAccessFile raf, NoeudCellule noeudCible) throws IOException {
-		// TODO Auto-generated method stub
 
-//		Arbre supprimerRacine(Arbre arbre) {
-//	        if (arbre.filsG == null)
-//	            return arbre.filsD;
-//	        if (arbre.filsD == null)
-//	            return arbre.filsG;
-//	        Arbre remplacant = chercherRemplacant(arbre.filsG);
-//	        arbre.contenu = remplacant.contenu;
-//	        arbre.filsG = supprimer(remplacant.contenu, arbre.filsG);
-//	}
-		
-		
-		//cas racine
-		
-		if (chercherParent(raf, noeudCible) == null) {
-			
-			
-			
-			
-		}
-		
-		
-		//cas pas d'enfant
-		if ((noeudCible.getIndexFilsDroit() == -1) && (noeudCible.getIndexFilsGauche() == -1) && (noeudCible.getIndexDoublon() == -1)) {
-		chercherParent(raf, noeudCible).modifierEnfant(raf, noeudCible, -1);
-	}
-		
-		
-		//cas doublon seul
-		
-				if (noeudCible.getIndexDoublon() != -1) {
-					chercherParent(raf, noeudCible).modifierEnfant(raf, noeudCible, noeudCible.getIndexDoublon());
-				}
-		
-		
-		//cas 1 enfant (fils droit)
-		
-		if ((noeudCible.getIndexFilsDroit() != -1) && (noeudCible.getIndexFilsGauche() == -1) ) {
-			chercherParent(raf, noeudCible).modifierEnfant(raf, noeudCible, noeudCible.getIndexFilsDroit());
-		}
-		
-		//cas 1 enfant (fils gauche)
-		if ((noeudCible.getIndexFilsDroit() == -1) && (noeudCible.getIndexFilsGauche() != -1)) {
-			chercherParent(raf, noeudCible).modifierEnfant(raf, noeudCible, noeudCible.getIndexFilsGauche());
-		}
-		
-		
-		//cas 2 enfants (fils gauche ET droit)
-		
-		if ((noeudCible.getIndexFilsDroit() != -1) && (noeudCible.getIndexFilsGauche() != -1) ) {
-			
 
-			
-			
-			
+
+		// cas pas d'enfant
+		if ((noeudCible.getIndexFilsDroit() == -1) && (noeudCible.getIndexFilsGauche() == -1)
+				&& (noeudCible.getIndexDoublon() == -1)) {
+			chercherParent(raf, noeudCible).modifierEnfant(raf, noeudCible, -1);
+		}
+
+		// cas doublon
+
+		if (noeudCible.getIndexDoublon() != -1) {
+			// S'il y a un doublon il prend juste la place du noeud supprimé
+
+			// on écrit à l'emplacement du doublon l'adresse des éventuels fils
+
+			int indexDoublonSuivant = chercherNoeudParIndex(raf, noeudCible.getIndexDoublon()).getIndexDoublon();
+
+			NoeudCellule doublon = chercherNoeudParIndex(raf, noeudCible.getIndexDoublon());
+			doublon.setIndexFilsDroit(noeudCible.getIndexFilsDroit());
+			doublon.setIndexFilsGauche(noeudCible.getIndexFilsGauche());
+			doublon.setIndexDoublon(indexDoublonSuivant);
+			ecrireNoeud(raf, doublon, noeudCible.getIndexNoeud());
+
+			if (noeudCible.getIndexNoeud() != 0) { // cas particulier racine
+
+				chercherParent(raf, noeudCible).modifierEnfant(raf, noeudCible, noeudCible.getIndexDoublon());
+
+			}
+
+		} else { // s'il n'y a pas de doublon on fait le traitement binaire normal
+
+			// cas 1 enfant (fils droit)
+
+			if ((noeudCible.getIndexFilsDroit() != -1) && (noeudCible.getIndexFilsGauche() == -1)) {
+				chercherParent(raf, noeudCible).modifierEnfant(raf, noeudCible, noeudCible.getIndexFilsDroit());
+			}
+
+			// cas 1 enfant (fils gauche)
+			if ((noeudCible.getIndexFilsDroit() == -1) && (noeudCible.getIndexFilsGauche() != -1)) {
+				chercherParent(raf, noeudCible).modifierEnfant(raf, noeudCible, noeudCible.getIndexFilsGauche());
+			}
+
+			// cas 2 enfants (fils gauche ET droit)
+
+			if ((noeudCible.getIndexFilsDroit() != -1) && (noeudCible.getIndexFilsGauche() != -1)
+					&& (noeudCible.getIndexDoublon() == -1)) {
+				if (noeudCible.getIndexNoeud() == 0) { // cas particulier racine
+
+					// le premier fils gauche est réécrit à la position 0
+					ecrireNoeud(raf, noeudCible.chercherNoeudParIndex(raf, noeudCible.getIndexFilsGauche()), 0);
+
+					chercherNoeudParIndex(raf, 0).ajouterEnfantRecursivement(raf, noeudCible.getCle(),
+							noeudCible.getIndexFilsDroit());
+
+				} else {
+
 //			Le premier fils gauche prend la place du noeud supprimé
-			chercherParent(raf, noeudCible).modifierEnfant(raf, noeudCible, noeudCible.getIndexFilsGauche());
-			
-			
-			//le fils droit du noeud supprimé est ajouté après le plus lointain fils droit du nouveau noeud (l'ancien fils gauche)
-			
-			chercherNoeudParIndex(raf,noeudCible.getIndexFilsGauche()).ajouterFilsDroitRecursivement(raf, noeudCible.getIndexFilsDroit());
-			
-			
-			
-			
-			
-		}
-		
-		
+					chercherParent(raf, noeudCible).modifierEnfant(raf, noeudCible, noeudCible.getIndexFilsGauche());
+					// le fils droit du noeud supprimé est ajouté après le plus lointain fils droit
+					// du nouveau noeud (l'ancien fils gauche)
 
+					chercherNoeudParIndex(raf, noeudCible.getIndexFilsGauche()).ajouterEnfantRecursivement(raf,
+							noeudCible.getCle(), noeudCible.getIndexFilsDroit());
+				}
+
+			}
+
+		}
+	}
+
+	private void ajouterEnfantRecursivement(RandomAccessFile raf, Stagiaire stagiaire, int nouvelIndex)
+			throws IOException {
+		// on essaye de modifier l'index d'un filsDroit comme dans "modifierEnfant",
+		// sauf que si la place est déjà prise on demande à au fils droit suivant (si il
+		// est plus grand) ou au fils gauche
+
+		if (this.cle.compareTo(stagiaire) < 0) {
+
+			if (this.indexFilsDroit == -1) {
+				this.setIndexFilsDroit(nouvelIndex);
+				ecrireNoeud(raf, this, this.indexNoeud);
+			} else {
+				chercherNoeudParIndex(raf, this.indexFilsDroit).ajouterEnfantRecursivement(raf, stagiaire, nouvelIndex);
+			}
+		}
+
+		if (this.cle.compareTo(stagiaire) > 0) {
+
+			if (this.indexFilsGauche == -1) {
+				this.setIndexFilsGauche(nouvelIndex);
+				ecrireNoeud(raf, this, this.indexNoeud);
+			} else {
+				chercherNoeudParIndex(raf, this.indexFilsGauche).ajouterEnfantRecursivement(raf, stagiaire,
+						nouvelIndex);
+			}
+		}
 
 	}
-	
-	
-	private void ajouterFilsDroitRecursivement(RandomAccessFile raf, int nouvelIndex ) throws IOException {
-		//on essaye de modifier l'index d'un filsDroit comme dans "modifierEnfant", sauf que si la place est déjà prise on demande à au fils droit suivant
-		
-		if (this.indexFilsDroit == -1) {
-			this.setIndexFilsDroit(nouvelIndex);
-			ecrireNoeud(raf, this, this.indexNoeud);
-		} else {
-			chercherNoeudParIndex(raf, this.indexFilsDroit).ajouterFilsDroitRecursivement(raf, nouvelIndex);
-		}
-		
-		
-	}
-	
+
 	private void modifierEnfant(RandomAccessFile raf, NoeudCellule enfant, int nouvelIndex) throws IOException {
-		//si la cible est un enfant du noeud appelant la méthode, remplace son index par nouvelIndex
-		
+		// si la cible est un enfant du noeud appelant la méthode, remplace son index
+		// par nouvelIndex
+
 		if (this.indexFilsGauche == enfant.getIndexNoeud()) {
 			this.setIndexFilsGauche(nouvelIndex);
 			ecrireNoeud(raf, this, this.getIndexNoeud());
-			
+
 		}
 		if (this.indexFilsDroit == enfant.getIndexNoeud()) {
 			this.setIndexFilsDroit(nouvelIndex);
 			ecrireNoeud(raf, this, this.getIndexNoeud());
-			
+
 		}
 		if (this.indexDoublon == enfant.getIndexNoeud()) {
 			this.setIndexDoublon(nouvelIndex);
 			ecrireNoeud(raf, this, this.getIndexNoeud());
-			
+
 		}
-		
-		
+
 	}
-	
-	
+
 	private NoeudCellule chercherParent(RandomAccessFile raf, NoeudCellule enfant) {
-		
-		//cas terminaison
-			//si l'un des fils est le noueudEnfant, return this
-		
-		if (this.indexFilsGauche==enfant.getIndexNoeud() || this.indexFilsDroit==enfant.getIndexNoeud() || this.indexDoublon==enfant.getIndexNoeud() ) {
+
+		// quand le noeud lance lui-même la méthode, this = enfant, donc on doit d'abord
+		// lancer la recherche depuis la racine
+		if (this.getCle().compareStrings(enfant.getCle()) == 0) {
+			return chercherNoeudParIndex(raf, 0).chercherParent(raf, enfant);
+		}
+
+		// cas terminaison
+		// si l'un des fils est le noueudEnfant, return this
+
+		if (this.indexFilsGauche == enfant.getIndexNoeud() || this.indexFilsDroit == enfant.getIndexNoeud()
+				|| this.indexDoublon == enfant.getIndexNoeud()) {
 			return this;
 		}
-		
-		
-		//cas de base
-			//si this a un doublon et que this a le même nom que l'enfant
-				//on demande au doublon
-		
+
+		// cas de base
+		// si this a un doublon et que this a le même nom que l'enfant
+		// on demande au doublon
+		if (this.indexDoublon != -1) {
 			if (this.getCle().getNom().compareTo(enfant.getCle().getNom()) == 0) {
-				this.chercherNoeudParIndex(raf, this.indexDoublon).chercherParent(raf,enfant);
+				return this.chercherNoeudParIndex(raf, this.indexDoublon).chercherParent(raf, enfant);
 			}
-		
-			//si this a un fils gauche
-				//on demande au this gauche
+		}
+
+		// si this a un fils gauche
+		// on demande au this gauche
 		if (this.indexFilsGauche != -1) {
-			this.chercherNoeudParIndex(raf, this.indexFilsGauche).chercherParent(raf,enfant);
+			NoeudCellule recherche = this.chercherNoeudParIndex(raf, this.indexFilsGauche).chercherParent(raf, enfant);
+			if (recherche != null)
+				return recherche;
 		}
-		
-			//si this a un fils droite
-				//on demande au fils droite
-		
+
+		// si this a un fils droite
+		// on demande au fils droite
+
 		if (this.indexFilsDroit != -1) {
-			this.chercherNoeudParIndex(raf, this.indexFilsDroit).chercherParent(raf,enfant);
+			NoeudCellule recherche = this.chercherNoeudParIndex(raf, this.indexFilsDroit).chercherParent(raf, enfant);
+			if (recherche != null)
+				return recherche;
 		}
-		
-		
-		
-		return null; //racine
+
+		return null;
+
 	}
 
-	// Essais de suppression (algo différent)
-
-//	public void supprimerNoeud(RandomAccessFile raf, NoeudCellule noeudCible) {
-//		// TODO Auto-generated method stub
-//
-//		// si on tombe sur le bon noeud on l'efface (cas particulier de la racine)
-//		if (this.getIndexNoeud() == noeudCible.getIndexNoeud()) {
-//			this.effacerNoeud(raf, noeudCible, 0);
-//		} else { // sinon
-//
-//			// recherche du parent du noeudCible
-//
-//			// si le noeud courant a un fils gauche
-//			if (this.getIndexFilsGauche() != -1) {
-//
-//				// Si le fils gauche n'est pas le noeudCible, on lui passe cette méthode
-//				if (this.getIndexFilsGauche() != noeudCible.getIndexNoeud()) {
-//					this.chercherNoeudParIndex(raf, this.getIndexFilsGauche()).supprimerNoeud(raf, noeudCible);
-//				} else { // Sinon on lance l'effacement sur le fils gauche
-//					this.effacerNoeud(raf, noeudCible, 1);
-//				}
-//
-//				// si le noeud courant a un doublon
-//				if (this.getIndexDoublon() != -1) {
-//
-//					// Si le doublon n'est pas le noeudCible, on lui passe cette méthode
-//					if (this.getIndexDoublon() != noeudCible.getIndexNoeud()) {
-//						this.chercherNoeudParIndex(raf, this.getIndexDoublon()).supprimerNoeud(raf, noeudCible);
-//					} else { // Sinon on lance l'effacement sur le doublon
-//						this.effacerNoeud(raf, noeudCible, 3);
-//					}
-//
-//				}
-//				// même processus du côté droit
-//				if (this.getIndexFilsDroit() != -1) {
-//
-//					// Si le fils gauche n'est pas le noeudCible, on lui passe cette méthode
-//					if (this.getIndexFilsDroit() != noeudCible.getIndexNoeud()) {
-//						this.chercherNoeudParIndex(raf, this.getIndexFilsDroit()).supprimerNoeud(raf, noeudCible);
-//					} else { // Sinon on lance l'effacement sur le fils gauche
-//						this.effacerNoeud(raf, noeudCible, 2);
-//					}
-//
-//				}
-//
-//			}
-//		}
-//	}
-
-//	private void effacerNoeud(RandomAccessFile raf, NoeudCellule noeudCible, int typeFils) {
-//		// TODO Auto-generated method stub
-//
-//		// cherche quel fils de "this" est le noeudCible
-//		// on traite chaque cas :
-//		// cas pas d'enfant : on enlève l'index du noeudCible (pas référencé = supprimé)
-//		// cas 1 enfant : on cherche quel enfant c'est,
-//
-//		// cas noueudCible est le fils droit
-//
-//		switch (typeFils) {
-//		case 0: // noeud à supprimer = racine
-//
-//			break;
-//		case 1: // noeud à supprimer = fils gauche
-//
-//			// cas aucun enfant
-//
-//			if ((noeudCible.getIndexFilsGauche() == -1) && (noeudCible.getIndexFilsDroit() == -1)
-//					&& (noeudCible.getIndexDoublon() == -1)) { 
-//				this.setIndexFilsGauche(-1);
-//			}
-//
-//				// cas 1 enfant
-//			
-//			if ((noeudCible.getIndexFilsGauche() != -1) && ((noeudCible.getIndexFilsDroit() == -1) && (noeudCible.getIndexDoublon() == -1) ))  { //si le noeudCible a un fils gauche mais pas les autres
-//				this.setIndexFilsGauche(noeudCible.getIndexFilsGauche());
-//			}
-//			
-//			if ((noeudCible.getIndexFilsDroit() != -1) && ((noeudCible.getIndexFilsGauche() == -1) && (noeudCible.getIndexDoublon() == -1) ))  { //si le noeudCible a un fils droit mais pas les autres
-//				this.setIndexFilsGauche(noeudCible.getIndexFilsDroit());
-//			}
-//			
-//			if ((noeudCible.getIndexDoublon() != -1) && ((noeudCible.getIndexFilsGauche() == -1) && (noeudCible.getIndexFilsDroit() == -1) ))  { //si le noeudCible a un doublon mais pas les autres
-//				this.setIndexFilsGauche(noeudCible.getIndexDoublon());
-//			}
-//			
-//
-//				// cas 2 enfants
-//
-//				// cas 3 enfants
-//
-//				break;
-//
-//		case 2: // noeud à supprimer = fils droit
-//
-//			break;
-//
-//		case 3: // noeud à supprimer = fils doublon
-//
-//			break;
-//
-//		default:
-//			break;
-//		}
-//
-//	}
-////
-//}
-
-//
+	
 ///*
 // * Ex : si un noeud pèse 100 octets et que notre fichier pèse 100 octets, alors
 // * 100/100 = 1, on place le nouveau noeud à l'index 1 (juste après le racine) si
