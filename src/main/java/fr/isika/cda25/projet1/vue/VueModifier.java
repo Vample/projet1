@@ -1,5 +1,9 @@
 package fr.isika.cda25.projet1.vue;
 
+import java.io.IOException;
+
+import fr.isika.cda25.projet1.model.Annuaire;
+import fr.isika.cda25.projet1.model.Stagiaire;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -12,40 +16,51 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class VueModifier extends GridPane {
-	
-	 private TextField txtNom; 
+	private TextField txtNom;
+	private TextField txtPrenom;
+	private TextField txtDepartement;
+	private TextField txtFormation;
+	private TextField txtAnnee;
+	private Stagiaire stagiaireCible;
 
-    public VueModifier(Stage stageAnnuaire, Stage stageModifier) {
-    	
-    	String nom = "test";
-    	String prenom = "de";
-    	String departement = "modifier";
-    	String formation = "Formation";
-    	String annee = "Année";
-    	
-    	
-    	
-        txtNom = new TextField();
-        txtNom.setPromptText(nom);
+	public VueModifier(Stage stageAnnuaire, Stage stageModifier, TableStagiaires listeStagiaires) {
+		String nom = "test";
+		String prenom = "de";
+		String departement = "modifier";
+		String formation = "Formation";
+		String annee = "Année";
 
-        TextField txtPrenom = new TextField();
-        txtPrenom.setPromptText(prenom);
+		txtNom = new TextField();
+		txtNom.setPromptText(nom);
 
-        TextField txtDepartement = new TextField();
-        txtDepartement.setPromptText(departement);
+		txtPrenom = new TextField();
+		txtPrenom.setPromptText(prenom);
 
-        TextField txtFormation = new TextField();
-        txtFormation.setPromptText(formation);
+		txtDepartement = new TextField();
+		txtDepartement.setPromptText(departement);
 
-        TextField txtAnnee = new TextField();
-        txtAnnee.setPromptText(annee);
+		txtFormation = new TextField();
+		txtFormation.setPromptText(formation);
 
+		txtAnnee = new TextField();
+		txtAnnee.setPromptText(annee);
         Button btnModifier = new Button("Modifier");
+        
+        Stagiaire stagiaireCible = listeStagiaires.getTable().getSelectionModel().getSelectedItem();
+        
+        if (stagiaireCible != null) {
+            txtNom.setText(stagiaireCible.getNom());
+            txtPrenom.setText(stagiaireCible.getPrenom());
+            txtDepartement.setText(stagiaireCible.getDepartement());
+            txtFormation.setText(stagiaireCible.getFormation());
+            txtAnnee.setText(String.valueOf(stagiaireCible.getAnneeRentree()));
+        }
 
         btnModifier.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent event) {
+				//stagiaireCible = listeStagiaires.getTable().getSelectionModel().getSelectedItem();
 				Alert alert = new Alert(AlertType.CONFIRMATION);
                 alert.setTitle("Confirmation de modification");
                 alert.setHeaderText(null);
@@ -59,6 +74,24 @@ public class VueModifier extends GridPane {
                 if (alert.getResult() == boutonOui) {
                 	stageModifier.close();
                     // méthode de modif
+                	Annuaire annuaire = new Annuaire();
+                	annuaire.supprimerStagiaire(stagiaireCible);
+                	
+                	annuaire.ajouterStagiaire(new Stagiaire(
+                		    txtNom.getText(),
+                		    txtPrenom.getText(),
+                		    txtDepartement.getText(),
+                		    txtFormation.getText(),
+                		    Integer.parseInt(txtAnnee.getText())
+                		));
+                	
+                	
+                	try {
+						listeStagiaires.genererListe(annuaire);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                 }
             	
             }

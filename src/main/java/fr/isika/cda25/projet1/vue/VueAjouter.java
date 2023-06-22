@@ -1,5 +1,7 @@
 package fr.isika.cda25.projet1.vue;
 
+import java.io.IOException;
+
 import fr.isika.cda25.projet1.model.Annuaire;
 import fr.isika.cda25.projet1.model.Stagiaire;
 import javafx.event.ActionEvent;
@@ -14,7 +16,7 @@ public class VueAjouter extends GridPane {
 	
 	 private TextField txtNom; 
 
-    public VueAjouter(Stage stageAnnuaire) {
+    public VueAjouter(Stage stageAnnuaire, TableStagiaires listeStagiaires) {
     	
     	String nom = "Nom";
     	String prenom = "Prénom";
@@ -48,6 +50,7 @@ public class VueAjouter extends GridPane {
         	//on récupére les valeurs entrées dans les champs de texte
     			@Override
     			public void handle(ActionEvent event) {
+    				stageAnnuaire.close();
     				// TODO Auto-generated method stub
     				//récupération des valeurs de champs de texte
     				String nom = txtNom.getText();
@@ -74,6 +77,13 @@ public class VueAjouter extends GridPane {
     				//créer une nouvelle instance de la classe annuaire
         			Annuaire monAnnuaire = new Annuaire();
     				monAnnuaire.ajouterStagiaire(nouveauStagiaire);
+    				
+    				try {
+						listeStagiaires.genererListe(monAnnuaire);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
     			
     			}
     			

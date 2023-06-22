@@ -71,7 +71,7 @@ public class VueAnnuaire extends GridPane {
             @Override
             public void handle(ActionEvent event) {
             	Stage stageAjouter = new Stage();
-                VueAjouter vueAjouter = new VueAjouter(stageAnnuaire);
+                VueAjouter vueAjouter = new VueAjouter(stageAnnuaire, listeStagiaires);
                 Scene sceneAjouter = new Scene(vueAjouter, 300,200);
                 
                 stageAjouter.setScene(sceneAjouter);
