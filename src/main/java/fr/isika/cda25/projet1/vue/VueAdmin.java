@@ -21,7 +21,6 @@ public class VueAdmin extends VueAnnuaire {
 		buttonModifier.setDisable(false);
 		buttonSupprimer.setDisable(false);
 		buttonAdmin.setText("Déconnexion");
-		System.out.println(stagiaireCible);
 
 		buttonAdmin.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
