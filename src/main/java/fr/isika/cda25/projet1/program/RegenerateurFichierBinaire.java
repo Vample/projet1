@@ -16,9 +16,11 @@ public class RegenerateurFichierBinaire {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		Annuaire annuaire = new Annuaire("src/main/java/fr/isika/cda25/projet1/files/test.bin");
+		
 
 		/* CODE PERMETTANT DE RECREER LE FICHIER BIN A PARTIR DU FICHIER DON */
+		//(En commentaire pour des raisons de sécurité)
+		//Annuaire annuaire = new Annuaire("src/main/java/fr/isika/cda25/projet1/files/test.bin");
 
 		// Arbre monArbre = new Arbre();
 		//
