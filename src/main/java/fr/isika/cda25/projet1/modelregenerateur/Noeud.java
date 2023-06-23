@@ -1,4 +1,4 @@
-package fr.isika.cda25.projet1.old;
+package fr.isika.cda25.projet1.modelregenerateur;
 
 import fr.isika.cda25.projet1.model.Stagiaire;
 

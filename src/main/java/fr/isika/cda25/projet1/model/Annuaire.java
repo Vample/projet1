@@ -24,8 +24,8 @@ public class Annuaire {
 		this.racine = this.chercherNoeud(0);
 		this.raf = null;
 	}
-	
-	public Annuaire (String adresseRaf) {
+
+	public Annuaire(String adresseRaf) {
 		setADDRESSE_FICHIER_BINAIRE(adresseRaf);
 		this.racine = new NoeudCellule(null, 0);
 		this.racine = this.chercherNoeud(0);
@@ -35,39 +35,38 @@ public class Annuaire {
 	// méthodes spécifiques
 
 	public void ajouterStagiaire(Stagiaire nouveauStagiaire) {
-		
+		// Chercher le nœud racine
 		this.racine = this.chercherNoeud(0);
 		try {
-
+			// Ouvrir le fichier en mode lecture/écriture
 			raf = new RandomAccessFile(ADDRESSE_FICHIER_BINAIRE, "rw");
-			
+
+			// Appeler la méthode d'ajout de nœud
 			racine.ajouterNoeud(raf, nouveauStagiaire, racine);
 
+			// Fermer le fichier
 			raf.close();
-
-		} catch (
-
-		IOException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public NoeudCellule chercherNoeud(int index) {
-
 		try {
+			// Ouvrir le fichier en mode lecture/écriture
 			raf = new RandomAccessFile(ADDRESSE_FICHIER_BINAIRE, "rw");
+
+			// Appeler la méthode de recherche de nœud par index
 			NoeudCellule resultat = racine.chercherNoeudParIndex(raf, index);
+
+			// Fermer le fichier
 			raf.close();
+
 			return resultat;
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
-
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -75,92 +74,43 @@ public class Annuaire {
 
 	public List<NoeudCellule> recupererTousLesNoeuds() {
 		try {
+			// Ouvrir le fichier en mode lecture/écriture
 			raf = new RandomAccessFile(ADDRESSE_FICHIER_BINAIRE, "rw");
+
+			// Créer une liste pour stocker les nœuds
 			List<NoeudCellule> listeNoeuds = new ArrayList<>();
+
+			// Appeler la méthode de récupération de tous les nœuds sur la racine
 			racine.recupererTousLesNoeuds(raf, listeNoeuds);
+
+			// Fermer le fichier
 			raf.close();
 
 			return listeNoeuds;
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
-
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	public List<NoeudCellule> chercherNoeudsParNom(String nom) {
-
-		try {
-			raf = new RandomAccessFile(ADDRESSE_FICHIER_BINAIRE, "rw");
-			List<NoeudCellule> listeNoeuds = new ArrayList<>();
-			racine.chercherNoeudParNom(raf, nom, listeNoeuds);
-			raf.close();
-
-			return listeNoeuds;
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-
 	}
 
 	public void supprimerStagiaire(Stagiaire stagiaireCible) {
-
 		try {
+			// Ouvrir le fichier en mode lecture/écriture
 			raf = new RandomAccessFile(ADDRESSE_FICHIER_BINAIRE, "rw");
 
-			// on identifie d'abord de quel noeud il s'agit
-//			List<NoeudCellule> noeudCible = new ArrayList<>(1); // on fait une liste de capacité 1 (nécessaire car nos
-//																// méthodes utilisent des listes)
-//
-//			racine.chercherNoeudParNom(raf, stagiaireCible.getNom(), noeudCible);
-//
-//			racine.supprimerNoeud(raf, noeudCible.get(0));
+			// Appeler la méthode récursive de suppression de stagiaire sur la racine
+			racine.supprimerStagiaire(raf, stagiaireCible);
 
-			 racine.supprimerStagiaire(raf,stagiaireCible);
-
+			// Fermer le fichier
 			raf.close();
-
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
-
-	public List<NoeudCellule> rechercheAvancee(String nom, String prenom, String departement, String formation,
-			String annee) {
-
-		try {
-			raf = new RandomAccessFile(ADDRESSE_FICHIER_BINAIRE, "rw");
-			List<NoeudCellule> listeNoeuds = new ArrayList<>();
-			racine.rechercheAvancee(raf, nom, prenom, departement, formation, annee, listeNoeuds);
-			raf.close();
-			return listeNoeuds;
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return null;
-
 	}
 
 	public NoeudCellule getRacine() {
@@ -186,6 +136,5 @@ public class Annuaire {
 	public static void setADDRESSE_FICHIER_BINAIRE(String aDDRESSE_FICHIER_BINAIRE) {
 		ADDRESSE_FICHIER_BINAIRE = aDDRESSE_FICHIER_BINAIRE;
 	}
-	
 
 }

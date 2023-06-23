@@ -21,8 +21,6 @@ public class VueAdmin extends VueAnnuaire {
 		buttonModifier.setDisable(false);
 		buttonSupprimer.setDisable(false);
 		buttonAdmin.setText("Déconnexion");
-//		stagiaireCible = new Stagiaire();
-//		stagiaireCible = this.listeStagiaires.getTable().getSelectionModel().getSelectedItem();
 		System.out.println(stagiaireCible);
 
 		buttonAdmin.setOnAction(new EventHandler<ActionEvent>() {
@@ -31,6 +29,7 @@ public class VueAdmin extends VueAnnuaire {
 
 				VueAnnuaire vueAnnuaire = new VueAnnuaire(stageAnnuaire);
 				Scene sceneAnnuaire = new Scene(vueAnnuaire);
+				//sceneAnnuaire.getRoot().setStyle(“-fx-font-family: ‘serif’“);
 				stageAnnuaire.setScene(sceneAnnuaire);
 			}
 		});
@@ -77,6 +76,7 @@ public class VueAdmin extends VueAnnuaire {
 			public void handle(ActionEvent event) {
 				Stage stageModifier = new Stage();
 				VueModifier vueModifier = new VueModifier(stageAnnuaire, stageModifier, listeStagiaires);
+				//sceneModifier.getRoot().setStyle(“-fx-font-family: ‘serif’“);
 				Scene sceneModifier = new Scene(vueModifier, 600, 400);
 
 				stageModifier.setScene(sceneModifier);
