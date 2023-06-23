@@ -50,7 +50,6 @@ public class VueAjouter extends GridPane {
         	//on récupére les valeurs entrées dans les champs de texte
     			@Override
     			public void handle(ActionEvent event) {
-    				stageAnnuaire.close();
     				// TODO Auto-generated method stub
     				//récupération des valeurs de champs de texte
     				String nom = txtNom.getText();
